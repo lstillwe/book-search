@@ -5,10 +5,16 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
 
     Query: {
-        getSingleUser: async (parent, { user, params }) => {
-            return User.findOne({
-                $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
-            });
+        me: async (parent, args, context) => {
+            if (context.user) {
+                const userData = await User.findOne({
+                    _id: context.user._id
+                })
+                .select('-__v -password');
+
+                return userData;
+            }
+            throw new AuthenticationError('Not logged in');
         }
     },
 
@@ -16,6 +22,8 @@ const resolvers = {
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
+
+            console.log("user= " + user + "  token=" + token);
       
             return { token, user };
         },
