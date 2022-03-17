@@ -22,8 +22,6 @@ const resolvers = {
         addUser: async (parent, args) => {
             const user = await User.create(args);
             const token = signToken(user);
-
-            console.log("user= " + user + "  token=" + token);
       
             return { token, user };
         },
@@ -49,7 +47,7 @@ const resolvers = {
                     { _id: context.user._id },
                     { $push: { savedBooks: bookData } },
                     { new: true }
-                ).populate('savedBooks');
+                );
       
               return updatedUser;
             }
@@ -74,3 +72,5 @@ const resolvers = {
         }
     }
 }
+
+module.exports = resolvers;
