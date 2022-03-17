@@ -1,4 +1,4 @@
-# GoogleBook Search MERN Application
+# Google Books Search MERN Application
 
 ![License Badge](https://shields.io/badge/license-BSD-green)
 ## Table of Contents
