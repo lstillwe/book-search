@@ -15,7 +15,7 @@ This repository contains a Google book search web application. This application 
 ![screenshot](./client/public/book-search.png)
 
 ## Deployment
-This portfolio is deployed [HERE](http://lstillwe.github.io/my-portfolio)
+This web application is deployed [HERE](https://boiling-wildwood-39680.herokuapp.com/)
 
 ## Questions
 You can find me [HERE](https://github.com/lstillwe) on Github.
